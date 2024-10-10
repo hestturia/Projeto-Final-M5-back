@@ -1,14 +1,22 @@
-import express from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import trafficRoutes from './routes/traffic.routes.js';
+import corsConfig from "./config/cors.config.js";
 
 dotenv.config();
 
 const app = express();
 
+app.use(express.json());
+app.use(corsConfig);
+
 mongoose.connect(process.env.MONGODB_URI, {
-   dbName: "quebra-molasdb",
-}).then(() => console.log("Connected to MongoDB"))
+   dbName: "test", 
+ }).then(() => console.log("Connected to MongoDB"))
    .catch((err) => console.error("Failed to connect to MongoDB", err));
+ 
+
+app.use('/api', trafficRoutes);
 
 app.listen(process.env.PORT || 3000, () => console.log("SERVER is running"));
