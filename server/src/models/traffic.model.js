@@ -1,6 +1,10 @@
 import { model, Schema } from "mongoose";
 
 const TrafficSchema = new Schema({
+  _id: {
+    type: String,
+    required: true
+  },
   id: {
     type: Number,
     required: true

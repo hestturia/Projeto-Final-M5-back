@@ -1,9 +1,10 @@
 import express from 'express';
-import { getAllTrafficData, getTrafficDataById } from '../controllers/traffic.controller.js';
+import { getAllTrafficData, getTrafficDataByMunicipio, getTrafficDataByUf } from '../controllers/traffic.controller.js';
 
 const router = express.Router();
 
-router.get('/traffic', getAllTrafficData);  // Rota para buscar todos os dados
-router.get('/traffic/:id', getTrafficDataById);  // Rota para buscar dados por ID
+router.get('/traffic', getAllTrafficData);
+router.get('/traffic/uf/:uf', getTrafficDataByUf);
+router.get('/traffic/municipio/:municipio', getTrafficDataByMunicipio);
 
 export default router;
