@@ -2,7 +2,7 @@ import Traffic from '../models/traffic.model.js';
 
 export const getAllTrafficData = async (req, res) => {
   try {
-    const data = await Traffic.find().limit(100);
+    const data = await Traffic.find({}, {causa:0, acidente:0}).limit(100);
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ message: "Erro ao buscar dados", error });
